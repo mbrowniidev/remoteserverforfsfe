@@ -1,0 +1,20 @@
+<html>
+    <head></head>
+    <body></body>
+    <script>
+        let ws;
+        // window.location.protocol tells us if connection is http or https
+        // wss - websocket secure is https
+        // ws - reg websocket 
+        // works on port 80 or port 443
+        const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        // create websocket
+        // must tell prootocl and where ot connect
+        // usign host b/c we are connecting at websocket on the root, we just pass our domain name
+        // winow.location.host as to where to connect
+        ws = new WebSocket(`${proto}://${window.location.host}`);
+
+        //get websocket to respond to server -if we want
+        ws.onmessage = (event) => { console.log(event.data)};
+    </script>
+</html>
